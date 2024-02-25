@@ -24,6 +24,7 @@
         };
         array.push(object);
       });
+      console.log(array);
 
       const listComm = document.querySelector('.productname-list');
       startPage = (arr) => {
@@ -66,9 +67,13 @@
 
       btnRemoveComment.forEach((el) => {
         el.addEventListener('click', (event) => {
-          let paternContainer = event.target.parentElement;
-          paternContainer.remove();
-          console.log(paternContainer);
+          let title =
+            event.target.parentNode.parentNode.previousElementSibling
+              .innerHTML;
+          localStorage.removeItem(title);
+          setTimeout(() => {
+            location.reload();
+          }, 1000);
         });
       });
     </script>
